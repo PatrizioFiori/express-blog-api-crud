@@ -1,8 +1,16 @@
 const posts = require(`../data/posts`)
 
 const index = (req, res) => {
-    res.json (posts)
-}
+    const tag = req.query.tag;
+  
+    if (tag) {
+      const postFiltrati = posts.filter(post => post.tags.includes(tag));
+      res.json(postFiltrati);
+    } else {
+      res.json(posts);
+    }
+  };
+  
 
 const show = (req, res) => {
     const post = posts.find(post => post.id == req.params.id)
@@ -15,7 +23,7 @@ const show = (req, res) => {
             error: "not found"
         })
     }
-    
+
     res.status(200).json(post);
 }
 
@@ -42,7 +50,7 @@ const destroy = (req, res) => {
             })
         }
         posts.splice(posts.indexOf(post), 1)
-        res.status(204).send(); // Risponde con uno stato 204 (Nessun Contenuto)
+        res.status(204).send();
     }
 
 
