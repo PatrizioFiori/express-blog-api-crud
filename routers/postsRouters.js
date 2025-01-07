@@ -16,5 +16,5 @@ router.get(`/:id`, postsController.modify)
 
 router.get(`/:id`, postsController.destroy)
 
-module.exports(router)
+module.exports = router
 

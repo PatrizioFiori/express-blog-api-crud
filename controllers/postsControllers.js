@@ -1,7 +1,6 @@
 const posts = require(`../data/posts`)
 
 const index = (req, res) => {
-    res.send("lista posts")
     res.json (posts)
 }
 
