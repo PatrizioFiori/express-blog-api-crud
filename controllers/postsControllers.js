@@ -14,7 +14,7 @@ const show = (req, res) => {
             error: "not found"
         })
     }
-    res.json(post)
+    res.status(200).json(post);
 }
 
 const store = (req, res) => {
@@ -30,8 +30,18 @@ const modify = (req, res) => {
 }
 
 const destroy = (req, res) => {
-    res.send("cancello il post con id" + req.params.id)
-}
+        const post = posts.find(post => post.id == req.params.id)
+        if (!post){
+            res.status(404)
+            return res.json({
+                "message": "id non trovato",
+                status: 404,
+                error: "not found"
+            })
+        }
+        posts.splice(posts.indexOf(post), 1)
+        res.status(204).send(); // Risponde con uno stato 204 (Nessun Contenuto)
+    }
 
 
 
