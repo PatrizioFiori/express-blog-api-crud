@@ -6,15 +6,13 @@ router.get(`/`, postsController.index)
 
 router.get(`/:id`, postsController.show)
 
-/*
-router.get(`/`, postsController.store)
+router.post(`/`, postsController.store)
 
-router.get(`/:id`, postsController.update)
+router.put(`/:id`, postsController.update)
 
-router.get(`/:id`, postsController.modify)
-*/
+router.patch(`/:id`, postsController.modify)
 
-router.get(`/:id`, postsController.destroy)
+router.delete(`/:id`, postsController.destroy)
 
 module.exports = router
 
