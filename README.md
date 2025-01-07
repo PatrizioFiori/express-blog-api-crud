@@ -9,6 +9,7 @@ Poi torniamo sul file delle rotte. Qui importiamo le funzioni dichiarate nel con
 Testiamo su postman/thunder-client se chiamando gli endpoint riceviamo effettivamente le stesse risposte che avevamo prima.
 Se tutto funziona, passiamo alla prossima milestone  
 
+
 **Milestone 2**  
 Per iniziare, creiamo una cartella `data`  in cui creare un file che contenga ed esporti l’array di posts che trovate in allegato.  Importiamo questo file in cima al controller.
 Ora passiamo ad implementare le logiche delle nostre CRUD:
