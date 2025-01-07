@@ -5,7 +5,16 @@ const index = (req, res) => {
 }
 
 const show = (req, res) => {
-    res.send("post in base all'id" + req.params.id)
+    const post = posts.find(post => post.id == req.params.id)
+    if (!post){
+        res.status(404)
+        return res.json({
+            "message": "id non trovato",
+            status: 404,
+            error: "not found"
+        })
+    }
+    res.json(post)
 }
 
 const store = (req, res) => {
@@ -15,7 +24,6 @@ const store = (req, res) => {
 const update = (req, res) => {
     res.send("update")
 }
-
 
 const modify = (req, res) => {
     res.send("modify")
