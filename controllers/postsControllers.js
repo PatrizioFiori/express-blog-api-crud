@@ -4,8 +4,8 @@ const index = (req, res) => {
     const tag = req.query.tag;
 
     if (tag) {
-        const normalizedTag = tag.charAt(0).toUpperCase() + tag.slice(1).toLowerCase();
-        const postFiltrati = posts.filter(post => post.tags.includes(normalizedTag));
+        const tagMaiuscolo = tag.charAt(0).toUpperCase() + tag.slice(1).toLowerCase();
+        const postFiltrati = posts.filter(post => post.tags.includes(tagMaiuscolo));
         res.json(postFiltrati);
     } else {
         res.json(posts);
