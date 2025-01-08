@@ -41,11 +41,27 @@ const store = (req, res) => {
 }
 
 const update = (req, res) => {
-    res.send("update")
+    res.send("update-PUT")
 }
 
 const modify = (req, res) => {
-    res.send("modify")
+    const id = req.params.id;
+    const post = posts.find(post => post.id == id);
+    
+    if(!post){
+        res.status(404)
+        return res.json({
+            message: "non trovato",
+            status: 404,
+            error: "not found"
+        })
+        
+    } else {
+    for (let key in req.body){
+        post[key] = req.body[key]
+        }
+    }
+
 }
 
 const destroy = (req, res) => {
