@@ -2,15 +2,16 @@ const posts = require(`../data/posts`)
 
 const index = (req, res) => {
     const tag = req.query.tag;
-  
+
     if (tag) {
-      const postFiltrati = posts.filter(post => post.tags.includes(tag));
-      res.json(postFiltrati);
+        const normalizedTag = tag.charAt(0).toUpperCase() + tag.slice(1).toLowerCase();
+        const postFiltrati = posts.filter(post => post.tags.includes(normalizedTag));
+        res.json(postFiltrati);
     } else {
-      res.json(posts);
+        res.json(posts);
     }
-  };
-  
+};
+
 
 const show = (req, res) => {
     const post = posts.find(post => post.id == req.params.id)
