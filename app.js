@@ -4,10 +4,11 @@ const postsRouter = require(`./routers/postsRouters`);
 const app = express()
 const port = 3000;
 
+app.use(express.json()) 
+
 app.get ("/", (req, res) => {
     res.send(`server attivo`)
 })
-
 
 app.use(`/posts`, postsRouter)
 
