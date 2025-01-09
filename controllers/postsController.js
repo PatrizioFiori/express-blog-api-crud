@@ -18,6 +18,7 @@ const show = (req, res) => {
     const post = posts.find(post => post.id == req.params.id)
     
     if (!post){
+        
         res.status(404)
         return res.json({
             "message": "id non trovato",
