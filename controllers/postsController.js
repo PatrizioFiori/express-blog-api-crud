@@ -1,5 +1,4 @@
 const posts = require(`../data/posts`)
-//const notFound = require(`./middlewares/notFound.js`);
 
 const index = (req, res) => {
     const tag = req.query.tag;
@@ -18,13 +17,7 @@ const show = (req, res) => {
     const post = posts.find(post => post.id == req.params.id)
     
     if (!post){
-        
-        res.status(404)
-        return res.json({
-            "message": "id non trovato",
-            status: 404,
-            error: "not found"
-        })
+        return funzione404(res)
     }
 
     res.status(200).json(post);
@@ -51,12 +44,7 @@ const modify = (req, res) => {
     const post = posts.find(post => post.id == id);
     
     if(!post){
-        res.status(404)
-        return res.json({
-            message: "non trovato",
-            status: 404,
-            error: "not found"
-        })
+        return funzione404(res)
         
     } else {
     for (let key in req.body){
@@ -69,17 +57,21 @@ const modify = (req, res) => {
 const destroy = (req, res) => {
         const post = posts.find(post => post.id == req.params.id)
         if (!post){
-            res.status(404)
-            return res.json({
-                "message": "id non trovato",
-                status: 404,
-                error: "not found"
-            })
+            return funzione404(res)
         }
         posts.splice(posts.indexOf(post), 1)
         res.status(204).send();
     }
 
+
+function funzione404(res){
+    res.status(404)
+    return res.json({
+        "message": "L'id dinamico ricercato non è stato trovato",
+        status: 404,
+        error: "not found"
+    })
+}
 
 
 module.exports = {index, show, store, update, modify, destroy};
