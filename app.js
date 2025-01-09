@@ -1,7 +1,7 @@
 const express = require(`express`);
 const postsRouter = require(`./routers/postsRouters`);
-const errorsHandler = require(`./middlewares/errorsHandler`);
-const notFound = require(`./middlewares/notFound`);
+const errorsHandler = require(`./middlewares/errorsHandler.js`);
+const notFound = require(`./middlewares/notFound.js`);
 
 const app = express()
 const port = 3000;
