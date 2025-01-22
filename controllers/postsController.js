@@ -15,8 +15,8 @@ const index = (req, res) => {
 
 const show = (req, res) => {
     const post = posts.find(post => post.id == req.params.id)
-    
-    if (!post){
+
+    if (!post) {
         return funzione404(res)
     }
 
@@ -24,12 +24,12 @@ const show = (req, res) => {
 }
 
 const store = (req, res) => {
-    const id = posts.at(-1).id +1;
+    const id = posts.at(-1).id + 1;
     const newPost = {
         id,
         ...req.body
     }
-    console.log (req.body)
+    console.log(req.body)
     posts.push(newPost)
     res.status(201)
     res.json(posts)
@@ -42,29 +42,29 @@ const update = (req, res) => {
 const modify = (req, res) => {
     const id = req.params.id;
     const post = posts.find(post => post.id == id);
-    
-    if(!post){
+
+    if (!post) {
         return funzione404(res)
-        
+
     } else {
-    for (let key in req.body){
-        post[key] = req.body[key]
+        for (let key in req.body) {
+            post[key] = req.body[key]
         }
     }
 
 }
 
 const destroy = (req, res) => {
-        const post = posts.find(post => post.id == req.params.id)
-        if (!post){
-            return funzione404(res)
-        }
-        posts.splice(posts.indexOf(post), 1)
-        res.status(204).send();
+    const post = posts.find(post => post.id == req.params.id)
+    if (!post) {
+        return funzione404(res)
     }
+    posts.splice(posts.indexOf(post), 1)
+    res.status(204).send();
+}
 
 
-function funzione404(res){
+function funzione404(res) {
     res.status(404)
     return res.json({
         "message": "L'id dinamico ricercato non è stato trovato",
@@ -74,4 +74,4 @@ function funzione404(res){
 }
 
 
-module.exports = {index, show, store, update, modify, destroy};
+module.exports = { index, show, store, update, modify, destroy };
